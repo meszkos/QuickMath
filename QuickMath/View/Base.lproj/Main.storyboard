@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Practice-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="QuickMath" customModuleProvider="target" sceneMemberID="viewController">
@@ -256,7 +256,7 @@
                             <constraint firstItem="FT1-s3-wIX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="nhW-ok-bNK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="kaG-UZ-ADV">
+                    <navigationItem key="navigationItem" title="Practice" id="kaG-UZ-ADV">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="gear" catalog="system" id="8Xe-ch-wee">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>

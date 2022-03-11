@@ -66,7 +66,7 @@ struct Manager{
         case "/":
             return "10"
         case "**":
-            return "10"
+            return "15"
         default:
             return "0"
         }

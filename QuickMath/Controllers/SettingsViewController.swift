@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SettingsDelegate{
-    func pickOperation()
+    func pickOperation(pickedOperation: String)
 }
 
 class SettingsViewController: UIViewController {
@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var allButton: UIButton!
     
     var delegate: SettingsDelegate?
+    var pickedOperation: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,12 @@ class SettingsViewController: UIViewController {
     @IBAction func operationPicked(_ sender: UIButton) {
         
         deselectButtons()
-        sender.backgroundColor = UIColor.systemMint
+        sender.alpha = 0.5
+        
+        pickedOperation = sender.titleLabel!.text!
+        
+        
+        
         
     }
     
@@ -39,7 +45,9 @@ class SettingsViewController: UIViewController {
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         
+        delegate?.pickOperation(pickedOperation: pickedOperation)
         navigationController?.popViewController(animated: true)
+        
     }
     
     //MARK: - Modfying UI
@@ -54,11 +62,12 @@ class SettingsViewController: UIViewController {
     }
     
     func deselectButtons(){
-        plusButton.backgroundColor = UIColor.systemBlue
-        minusButton.backgroundColor = UIColor.systemBlue
-        multiplyButton.backgroundColor = UIColor.systemBlue
-        devideButton.backgroundColor = UIColor.systemBlue
-        powerButton.backgroundColor = UIColor.systemBlue
-        allButton.backgroundColor = UIColor.systemBlue
+        plusButton.alpha = 1
+        minusButton.alpha = 1
+        multiplyButton.alpha = 1
+        devideButton.alpha = 1
+        powerButton.alpha = 1
+        allButton.alpha = 1
+        
     }
 }

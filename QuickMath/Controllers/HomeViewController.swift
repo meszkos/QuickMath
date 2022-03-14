@@ -86,7 +86,15 @@ class HomeViewController: UIViewController, SettingsDelegate {
             
             startButton.setTitle("Check", for: .normal)
             manager.provideEquasion(operation: operation)
+            
+           
+            if operation == "+ - x / *2"{
+                DispatchQueue.main.async {
+                    self.questionLabel.text = "\(self.manager.n1) \(self.manager.equasionArray[self.manager.arrayIndex]) \(self.manager.n2) ="
+                }
+            }
             questionLabel.text = "\(manager.n1) \(operation) \(manager.n2) ="
+            
             
             startTimer()
         }
@@ -103,6 +111,13 @@ class HomeViewController: UIViewController, SettingsDelegate {
                     self.resultLabel.text = "0"
                     
                     self.manager.provideEquasion(operation: self.operation)
+                    
+                    DispatchQueue.main.async {
+                        if self.operation == "+ - x / *2"{
+                            self.questionLabel.text = "\(self.manager.n1) \(self.manager.equasionArray[self.manager.arrayIndex]) \(self.manager.n2) ="
+                        }
+                    }
+                    
                     self.questionLabel.text = "\(self.manager.n1) \(self.operation) \(self.manager.n2) ="
                 }
             }

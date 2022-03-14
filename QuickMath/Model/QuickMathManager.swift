@@ -10,6 +10,8 @@ import Foundation
 
 struct Manager{
     
+    var equasionArray = ["+","-","x","/","**"]
+    var arrayIndex = 0
     var n1 = 0
     var n2 = 0
     var correctResult = ""
@@ -26,7 +28,6 @@ struct Manager{
             n1 = Int.random(in: 1...100)
             n2 = Int.random(in: 1...100)
             
-            
             correctResult = String(n1 - n2)
         case "x":
             n1 = Int.random(in: 1...10)
@@ -42,12 +43,16 @@ struct Manager{
             n1 = Int.random(in: 1...10)
             n2 = Int.random(in: 2...3)
             
-            
             if n2 == 2{
                 correctResult = String(n1 * n1)
             }else{
                 correctResult = String(n1 * n1 * n1)
             }
+        case "+ - x / *2":
+            arrayIndex = Int.random(in: 0...4)
+            print(arrayIndex)
+            print(equasionArray.count)
+            provideEquasion(operation: equasionArray[arrayIndex])
             
         default:
             return
@@ -66,6 +71,8 @@ struct Manager{
         case "/":
             return "10"
         case "**":
+            return "15"
+        case "+ - x / *2":
             return "15"
         default:
             return "0"

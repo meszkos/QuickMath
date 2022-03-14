@@ -36,11 +36,7 @@ class SettingsViewController: UIViewController {
         
         pickedOperation = sender.titleLabel!.text!
         
-        
-        
-        
     }
-    
     
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
@@ -50,7 +46,7 @@ class SettingsViewController: UIViewController {
         
     }
     
-    //MARK: - Modfying UI
+//MARK: - UI Methods
     
     func changeButtonCorenrRadius(){
         plusButton.layer.cornerRadius = 20

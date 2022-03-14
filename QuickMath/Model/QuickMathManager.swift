@@ -29,6 +29,7 @@ struct Manager{
             n2 = Int.random(in: 1...100)
             
             correctResult = String(n1 - n2)
+            print(correctResult)
         case "x":
             n1 = Int.random(in: 1...10)
             n2 = Int.random(in: 1...10)

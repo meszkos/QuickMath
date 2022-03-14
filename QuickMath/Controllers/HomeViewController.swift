@@ -10,6 +10,8 @@ import UIKit
 class HomeViewController: UIViewController, SettingsDelegate {
     
 
+    @IBOutlet weak var commaButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var oneButton: UIButton!
     @IBOutlet weak var twoButton: UIButton!
     @IBOutlet weak var threeButton: UIButton!
@@ -149,6 +151,9 @@ class HomeViewController: UIViewController, SettingsDelegate {
         
     }
     
+    
+//MARK: - Seque 
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         time = 0.0
@@ -161,6 +166,11 @@ class HomeViewController: UIViewController, SettingsDelegate {
         
     }
 
+    
+    
+    
+
+//MARK: - Timer methods
     func startTimer(){
         timer.invalidate()
         time = 0.0
@@ -173,7 +183,11 @@ class HomeViewController: UIViewController, SettingsDelegate {
         time += 0.1
         timeLabel.text = "\(String(format: "%.1f", time))s"
         }
-    //MARK: - UI Methods
+    
+    
+    
+//MARK: - UI Methods
+    
     func updateCornerRadius(){
         oneButton.layer.cornerRadius = 20
         twoButton.layer.cornerRadius = 20
@@ -187,6 +201,8 @@ class HomeViewController: UIViewController, SettingsDelegate {
         zeroButton.layer.cornerRadius = 20
         deleteButton.layer.cornerRadius = 20
         startButton.layer.cornerRadius = 20
+        commaButton.layer.cornerRadius = 20
+        minusButton.layer.cornerRadius = 20
     }
     
     

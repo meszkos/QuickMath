@@ -169,8 +169,11 @@ class HomeViewController: UIViewController, SettingsDelegate {
         startButton.setTitle("Start", for: .normal)
         answer = "0"
         resultLabel.text = "0"
-        displayBestScore()
         
+        
+//        if pickedOperation != nil {
+//            displayBestScore()
+//        }
     }
     
     

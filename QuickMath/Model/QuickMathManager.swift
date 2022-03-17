@@ -12,6 +12,8 @@ struct Manager{
     
     let userDefaults = UserDefaults()
     var equasionArray = ["+","-","x","/","**"]
+    var devideNumbers = [""]
+    
     var arrayIndex = 0
     var n1 = 0
     var n2 = 0
@@ -32,22 +34,21 @@ struct Manager{
             correctResult = String(n1 - n2)
             
         case "x":
-            n1 = Int.random(in: 1...10)
-            n2 = Int.random(in: 1...10)
+            n1 = Int.random(in: 1...100)
+            n2 = Int.random(in: 1...50)
             
             correctResult = String(n1 * n2)
         case "/":
-            n1 = Int.random(in: 1...100)
-            n2 = Int.random(in: 1...10)
+            n1 = Int.random(in: 1...50)
+            n2 = Int.random(in: 1...50)
             
-            let doubleN1 = Double(n1)
-            let doubleN2 = Double(n2)
+            n1 = n1 * n2
             
-            let result = String(format: "%.1f" ,Float(doubleN1 / doubleN2))
+            let result = String(n1 / n2)
             correctResult = String(result)
-            
+            print(correctResult)
         case "**":
-            n1 = Int.random(in: 1...10)
+            n1 = Int.random(in: 1...100)
             n2 = Int.random(in: 2...3)
             
             if n2 == 2{
@@ -69,7 +70,7 @@ struct Manager{
         
         switch operation {
         case "+":
-            return "8"
+            return "10"
         case "-":
             return "10"
         case "x":

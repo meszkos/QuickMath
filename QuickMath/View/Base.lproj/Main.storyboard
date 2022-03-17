@@ -3,7 +3,6 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +23,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="330" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IQO-uO-SAs">
-                                                <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="40"/>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="MF9-q5-Bz2"/>
@@ -36,21 +35,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="numberButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DfT-df-ezi"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFr-u0-sld">
-                                                <rect key="frame" x="180" y="0.0" width="150" height="40"/>
-                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="U4h-vL-DtF"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title=".">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
-                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="numberButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wi7-Bb-cM6"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -190,13 +174,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="fkB-eo-wms">
                                         <rect key="frame" x="0.0" y="298" width="330" height="70"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QW-wK-rvD">
+                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="delete" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QW-wK-rvD">
                                                 <rect key="frame" x="0.0" y="0.0" width="86.666666666666671" height="70"/>
-                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Start">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                                                <buttonConfiguration key="configuration" style="plain">
+                                                    <backgroundConfiguration key="background" image="delete.right" catalog="system"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="operationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3E7-wk-SJG"/>
@@ -214,14 +197,13 @@
                                                     <action selector="numberButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fn8-PT-eD5"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="delete" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwQ-VA-8Ki">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwQ-VA-8Ki">
                                                 <rect key="frame" x="243.33333333333329" y="0.0" width="86.666666666666657" height="70"/>
+                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain">
-                                                    <backgroundConfiguration key="background">
-                                                        <imageReference key="image" image="delete.left" catalog="system" symbolScale="small"/>
-                                                    </backgroundConfiguration>
+                                                <buttonConfiguration key="configuration" style="plain" title="Start">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="operationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qwO-Ps-ach"/>
@@ -310,8 +292,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bestScoreLabel" destination="1WP-mU-dD3" id="ZOA-BO-WOb"/>
-                        <outlet property="commaButton" destination="YFr-u0-sld" id="vFU-YK-dc9"/>
-                        <outlet property="deleteButton" destination="dwQ-VA-8Ki" id="2I0-fe-Hao"/>
+                        <outlet property="deleteButton" destination="8QW-wK-rvD" id="WEm-A3-HTS"/>
                         <outlet property="eightButton" destination="u4F-5r-AD2" id="pdH-Xy-vLb"/>
                         <outlet property="fiveButton" destination="SZu-CA-mMN" id="eJJ-CH-EUS"/>
                         <outlet property="fourButton" destination="thQ-eY-3dV" id="qbL-tG-Wdh"/>
@@ -323,7 +304,7 @@
                         <outlet property="sevenButton" destination="kuR-av-ls3" id="ZQb-bW-SZD"/>
                         <outlet property="sixButton" destination="ocU-NA-jNm" id="Edq-MQ-3Gq"/>
                         <outlet property="stageLabel" destination="Pv9-C3-G1L" id="E08-77-q6U"/>
-                        <outlet property="startButton" destination="8QW-wK-rvD" id="TU2-ZM-887"/>
+                        <outlet property="startButton" destination="dwQ-VA-8Ki" id="zBl-6i-umd"/>
                         <outlet property="threeButton" destination="jgB-TQ-OYE" id="Srm-ck-ZSL"/>
                         <outlet property="timeLabel" destination="dR1-3S-t6f" id="LzL-ms-9gh"/>
                         <outlet property="twoButton" destination="tDA-uB-iDm" id="4PW-lu-pyn"/>
@@ -497,7 +478,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="delete.left" catalog="system" width="128" height="104"/>
+        <image name="delete.right" catalog="system" width="128" height="104"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

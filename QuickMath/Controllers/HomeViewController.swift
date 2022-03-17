@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController, SettingsDelegate {
     
 
-    @IBOutlet weak var commaButton: UIButton!
+ 
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var oneButton: UIButton!
     @IBOutlet weak var twoButton: UIButton!
@@ -236,7 +236,6 @@ class HomeViewController: UIViewController, SettingsDelegate {
         zeroButton.layer.cornerRadius = 20
         deleteButton.layer.cornerRadius = 20
         startButton.layer.cornerRadius = 20
-        commaButton.layer.cornerRadius = 20
         minusButton.layer.cornerRadius = 20
     }
     

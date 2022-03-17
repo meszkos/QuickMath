@@ -28,19 +28,26 @@ class HomeViewController: UIViewController, SettingsDelegate {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var stageLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var bestScoreLabel: UILabel!
     
     let settingsController = SettingsViewController()
+    let userDefaults = UserDefaults()
+    
     var answer: String = ""
     var operation: String = "+"
     var manager = Manager()
     
     var timer = Timer()
     var time = 0.0
+    var score = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         updateCornerRadius()
+        manager.setDefaultBestScore()
+        displayBestScore()
+        
         
     }
     
@@ -51,12 +58,16 @@ class HomeViewController: UIViewController, SettingsDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             sender.alpha = 1
         }
-        if answer.count < 4 {
+        
+        if answer.count < 5 {
+            
             if answer.prefix(1) == "0"{
                 answer = ""
                 resultLabel.text = ""
             }
             answer.append(sender.titleLabel!.text!)
+            
+            
         }
         resultLabel.text = answer
         
@@ -81,10 +92,12 @@ class HomeViewController: UIViewController, SettingsDelegate {
             }
         }
         if sender.titleLabel?.text == "Start"{
+            score = 0
             answer = "0"
             resultLabel.text = "0"
             resultLabel.textColor = UIColor.white
             timeLabel.textColor = UIColor.white
+            stageLabel.text = String("Score: \(self.score)")
             
             startButton.setTitle("Check", for: .normal)
             manager.provideEquasion(operation: operation)
@@ -106,11 +119,13 @@ class HomeViewController: UIViewController, SettingsDelegate {
             
             if manager.correctResult == answer && time < Double(timeLimit)!{
                 resultLabel.textColor = UIColor.systemGreen
+                score += 1
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.startTimer()
                     self.resultLabel.textColor = UIColor.white
                     self.answer = "0"
                     self.resultLabel.text = "0"
+                    self.stageLabel.text = String("Score: \(self.score)")
                     
                     self.manager.provideEquasion(operation: self.operation)
                     
@@ -127,11 +142,17 @@ class HomeViewController: UIViewController, SettingsDelegate {
                 
                 resultLabel.textColor = UIColor.systemRed
                 startButton.setTitle("Start", for: .normal)
+                
+                updateBestScore()
+                displayBestScore()
             }
             if time > Double(timeLimit)!{
                 
                 timeLabel.textColor = UIColor.systemRed
                 startButton.setTitle("Start", for: .normal)
+                
+                updateBestScore()
+                displayBestScore()
             }
         }
         
@@ -148,6 +169,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
         startButton.setTitle("Start", for: .normal)
         answer = "0"
         resultLabel.text = "0"
+        displayBestScore()
         
     }
     
@@ -187,6 +209,16 @@ class HomeViewController: UIViewController, SettingsDelegate {
     
     
 //MARK: - UI Methods
+    
+    
+    func displayBestScore(){
+        bestScoreLabel.text = "Best score: \(userDefaults.value(forKey: operation) as! Int)"
+    }
+    func updateBestScore(){
+        if score > userDefaults.value(forKey: operation) as! Int{
+            userDefaults.setValue(score, forKey: operation)
+        }
+    }
     
     func updateCornerRadius(){
         oneButton.layer.cornerRadius = 20

@@ -32,7 +32,7 @@ class SettingsViewController: UIViewController {
     @IBAction func operationPicked(_ sender: UIButton) {
         
         deselectButtons()
-        sender.alpha = 0.5
+        sender.backgroundColor = UIColor.systemMint
         
         pickedOperation = sender.titleLabel!.text!
         
@@ -58,12 +58,15 @@ class SettingsViewController: UIViewController {
     }
     
     func deselectButtons(){
-        plusButton.alpha = 1
-        minusButton.alpha = 1
-        multiplyButton.alpha = 1
-        devideButton.alpha = 1
-        powerButton.alpha = 1
-        allButton.alpha = 1
+        
+        
+        plusButton.backgroundColor = UIColor.systemBlue
+        minusButton.backgroundColor = UIColor.systemBlue
+        multiplyButton.backgroundColor = UIColor.systemBlue
+        devideButton.backgroundColor = UIColor.systemBlue
+        powerButton.backgroundColor = UIColor.systemBlue
+        allButton.backgroundColor = UIColor.systemBlue
+        
         
     }
 }

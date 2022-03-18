@@ -6,50 +6,92 @@
 //
 
 import Foundation
+import QuartzCore
 
 
 struct Manager{
     
     let userDefaults = UserDefaults()
     var equasionArray = ["+","-","x","/","**"]
-    var devideNumbers = [""]
+    
     
     var arrayIndex = 0
     var n1 = 0
     var n2 = 0
     var correctResult = ""
     
-    mutating func provideEquasion(operation: String){
+    mutating func provideEquasion(operation: String, currentScore: Int){
         
         switch operation {
         case "+":
-            n1 = Int.random(in: 1...100)
-            n2 = Int.random(in: 1...100)
+            if currentScore < 10{
+                n1 = Int.random(in: 1...100)
+                n2 = Int.random(in: 1...100)
+            }else if currentScore < 20{
+                n1 = Int.random(in: 1...500)
+                n2 = Int.random(in: 1...150)
+            }else if currentScore < 30{
+                n1 = Int.random(in: 1...500)
+                n2 = Int.random(in: 1...500)
+            }
+            
             
             correctResult = String(n1 + n2)
         case "-":
-            n1 = Int.random(in: 1...100)
-            n2 = Int.random(in: 1...100)
+            if currentScore < 10{
+                n1 = Int.random(in: 1...100)
+                n2 = Int.random(in: 1...100)
+            }else if currentScore < 20{
+                n1 = Int.random(in: 1...500)
+                n2 = Int.random(in: 1...100)
+            }else if currentScore < 30{
+                n1 = Int.random(in: 1...500)
+                n2 = Int.random(in: 1...500)
+            }
             
             correctResult = String(n1 - n2)
             
         case "x":
-            n1 = Int.random(in: 1...100)
-            n2 = Int.random(in: 1...50)
+            if currentScore < 10{
+                n1 = Int.random(in: 1...50)
+                n2 = Int.random(in: 1...100)
+            }else if currentScore < 20{
+                n1 = Int.random(in: 1...100)
+                n2 = Int.random(in: 1...100)
+            }else if currentScore < 30{
+                n1 = Int.random(in: 1...150)
+                n2 = Int.random(in: 1...100)
+            }
             
             correctResult = String(n1 * n2)
-        case "/":
-            n1 = Int.random(in: 1...50)
-            n2 = Int.random(in: 1...50)
             
+        case "/":
+            if currentScore < 10{
+                n1 = Int.random(in: 1...50)
+                n2 = Int.random(in: 1...100)
+            }else if currentScore < 20{
+                n1 = Int.random(in: 1...100)
+                n2 = Int.random(in: 1...100)
+            }else if currentScore < 30{
+                n1 = Int.random(in: 1...150)
+                n2 = Int.random(in: 1...100)
+            }
             n1 = n1 * n2
             
             let result = String(n1 / n2)
             correctResult = String(result)
-            print(correctResult)
+            
         case "**":
-            n1 = Int.random(in: 1...100)
-            n2 = Int.random(in: 2...3)
+            if currentScore < 10{
+                n1 = Int.random(in: 1...20)
+                n2 = Int.random(in: 2...3)
+            }else if currentScore < 20{
+                n1 = Int.random(in: 1...100)
+                n2 = Int.random(in: 2...3)
+            }else if currentScore < 30{
+                n1 = Int.random(in: 1...100)
+                n2 = Int.random(in: 2...3)
+            }
             
             if n2 == 2{
                 correctResult = String(n1 * n1)
@@ -59,7 +101,7 @@ struct Manager{
         case "+ - x / *2":
             arrayIndex = Int.random(in: 0...4)
             
-            provideEquasion(operation: equasionArray[arrayIndex])
+            provideEquasion(operation: equasionArray[arrayIndex],currentScore: currentScore)
             
         default:
             return
@@ -106,6 +148,9 @@ struct Manager{
         }
         
     }
+    
+    
+    
     
     
 }

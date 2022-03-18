@@ -40,6 +40,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
     var timer = Timer()
     var time = 0.0
     var score = 0
+    let bestScoreLayer = CAEmitterLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +50,10 @@ class HomeViewController: UIViewController, SettingsDelegate {
         displayBestScore()
         
         
+        
     }
+    
+//MARK: - Main Functionality
     
     @IBAction func numberButtonPressed(_ sender: UIButton) {
         
@@ -102,6 +106,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
             }
         }
         if sender.titleLabel?.text == "Start"{
+            bestScoreLayer.removeFromSuperlayer()
             score = 0
             answer = "0"
             resultLabel.text = "0"
@@ -110,9 +115,8 @@ class HomeViewController: UIViewController, SettingsDelegate {
             stageLabel.text = String("Score: \(self.score)")
             
             startButton.setTitle("Check", for: .normal)
-            manager.provideEquasion(operation: operation)
+            manager.provideEquasion(operation: operation,currentScore: score)
             
-           
             if operation == "+ - x / *2"{
                 DispatchQueue.main.async {
                     self.questionLabel.text = "\(self.manager.n1) \(self.manager.equasionArray[self.manager.arrayIndex]) \(self.manager.n2) ="
@@ -120,16 +124,17 @@ class HomeViewController: UIViewController, SettingsDelegate {
             }
             questionLabel.text = "\(manager.n1) \(operation) \(manager.n2) ="
             
-            
             startTimer()
         }
         if sender.titleLabel?.text == "Check"{
             timer.invalidate()
             let timeLimit = manager.checkTimeLimit(operation: operation)
             
+    //If corect answer
             if manager.correctResult == answer && time < Double(timeLimit)!{
                 resultLabel.textColor = UIColor.systemGreen
                 score += 1
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.startTimer()
                     self.resultLabel.textColor = UIColor.white
@@ -137,17 +142,17 @@ class HomeViewController: UIViewController, SettingsDelegate {
                     self.resultLabel.text = "0"
                     self.stageLabel.text = String("Score: \(self.score)")
                     
-                    self.manager.provideEquasion(operation: self.operation)
+                    self.manager.provideEquasion(operation: self.operation, currentScore: self.score)
                     
                     DispatchQueue.main.async {
                         if self.operation == "+ - x / *2"{
                             self.questionLabel.text = "\(self.manager.n1) \(self.manager.equasionArray[self.manager.arrayIndex]) \(self.manager.n2) ="
                         }
                     }
-                    
                     self.questionLabel.text = "\(self.manager.n1) \(self.operation) \(self.manager.n2) ="
                 }
             }
+    //If wrong answer
             if manager.correctResult != answer{
                 
                 resultLabel.textColor = UIColor.systemRed
@@ -156,6 +161,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
                 updateBestScore()
                 displayBestScore()
             }
+    //If too slow
             if time > Double(timeLimit)!{
                 
                 timeLabel.textColor = UIColor.systemRed
@@ -170,7 +176,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
     
     func pickOperation(pickedOperation: String) {
         operation = pickedOperation
-        
+        displayBestScore()
         
         questionLabel.text = "Click start"
         timeLabel.textColor = UIColor.white
@@ -226,6 +232,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
     func updateBestScore(){
         if score > userDefaults.value(forKey: operation) as! Int{
             userDefaults.setValue(score, forKey: operation)
+            bestScoreAnimation()
         }
     }
     
@@ -245,5 +252,27 @@ class HomeViewController: UIViewController, SettingsDelegate {
         minusButton.layer.cornerRadius = 20
     }
     
-    
+    func bestScoreAnimation(){
+        
+        let imagesArray = ["100","fire"]
+        
+        bestScoreLayer.emitterPosition = CGPoint(x: view.center.x,
+                                                 y: -100)
+        
+        let cells: [CAEmitterCell] = imagesArray.compactMap{
+            let cell = CAEmitterCell()
+            cell.scale = 1
+            cell.emissionRange = .pi * 2
+            cell.lifetime = 100
+            cell.birthRate = 28
+            cell.velocity = 220
+            cell.spin = 2.5
+            cell.contents = UIImage(named: $0)!.cgImage
+            return cell
+        }
+        
+        bestScoreLayer.emitterCells = cells
+        
+        view.layer.addSublayer(bestScoreLayer)
+    }
 }

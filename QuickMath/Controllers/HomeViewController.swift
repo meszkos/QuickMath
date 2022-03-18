@@ -59,7 +59,17 @@ class HomeViewController: UIViewController, SettingsDelegate {
             sender.alpha = 1
         }
         
-        if answer.count < 5 {
+        if sender.titleLabel!.text == "-"{
+            if answer.prefix(1) == "0"{
+                answer = ""
+                resultLabel.text = ""
+            }
+            if answer.count == 0{
+                answer.append(sender.titleLabel!.text!)
+            }
+        }else
+           if answer.count < 5 {
+        
             
             if answer.prefix(1) == "0"{
                 answer = ""
@@ -170,10 +180,6 @@ class HomeViewController: UIViewController, SettingsDelegate {
         answer = "0"
         resultLabel.text = "0"
         
-        
-//        if pickedOperation != nil {
-//            displayBestScore()
-//        }
     }
     
     

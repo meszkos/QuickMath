@@ -127,7 +127,10 @@ struct Manager{
             return "0"
         }
     }
+    
     func setDefaultBestScore(){
+    // Prevents crash when playing for the first time
+        
         if userDefaults.value(forKey: "+") == nil{
             userDefaults.setValue(0, forKey: "+")
         }

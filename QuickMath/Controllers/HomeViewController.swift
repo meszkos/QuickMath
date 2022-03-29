@@ -227,6 +227,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
     
     
     func displayBestScore(){
+        
         bestScoreLabel.text = "Best score: \(userDefaults.value(forKey: operation) as! Int)"
     }
     func updateBestScore(){

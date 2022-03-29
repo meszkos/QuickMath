@@ -41,7 +41,10 @@ class SettingsViewController: UIViewController {
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         
-        delegate?.pickOperation(pickedOperation: pickedOperation)
+        if pickedOperation != ""{
+            delegate?.pickOperation(pickedOperation: pickedOperation)
+        }
+        
         navigationController?.popViewController(animated: true)
         
     }

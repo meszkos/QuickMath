@@ -22,10 +22,13 @@ class SettingsViewController: UIViewController {
     
     var delegate: SettingsDelegate?
     var pickedOperation: String = ""
-
+   
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    
         changeButtonCorenrRadius()
     }
 
@@ -71,3 +74,4 @@ class SettingsViewController: UIViewController {
         
     }
 }
+

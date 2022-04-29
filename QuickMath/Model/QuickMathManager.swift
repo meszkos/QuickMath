@@ -33,6 +33,9 @@ struct Manager{
             }else if currentScore < 30{
                 n1 = Int.random(in: 1...500)
                 n2 = Int.random(in: 1...500)
+            }else{
+                n1 = Int.random(in: 1...750)
+                n2 = Int.random(in: 1...750)
             }
             
             
@@ -47,20 +50,26 @@ struct Manager{
             }else if currentScore < 30{
                 n1 = Int.random(in: 1...500)
                 n2 = Int.random(in: 1...500)
+            }else{
+                n1 = Int.random(in: 1...750)
+                n2 = Int.random(in: 1...750)
             }
             
             correctResult = String(n1 - n2)
             
         case "x":
             if currentScore < 10{
-                n1 = Int.random(in: 1...50)
-                n2 = Int.random(in: 1...100)
+                n1 = Int.random(in: 1...10)
+                n2 = Int.random(in: 1...20)
             }else if currentScore < 20{
+                n1 = Int.random(in: 1...50)
+                n2 = Int.random(in: 1...50)
+            }else if currentScore < 30{
                 n1 = Int.random(in: 1...100)
                 n2 = Int.random(in: 1...100)
-            }else if currentScore < 30{
+            }else{
                 n1 = Int.random(in: 1...150)
-                n2 = Int.random(in: 1...100)
+                n2 = Int.random(in: 1...150)
             }
             
             correctResult = String(n1 * n2)
@@ -75,6 +84,9 @@ struct Manager{
             }else if currentScore < 30{
                 n1 = Int.random(in: 1...150)
                 n2 = Int.random(in: 1...100)
+            }else{
+                n1 = Int.random(in: 1...150)
+                n2 = Int.random(in: 1...150)
             }
             n1 = n1 * n2
             
@@ -83,12 +95,15 @@ struct Manager{
             
         case "**":
             if currentScore < 10{
-                n1 = Int.random(in: 1...20)
+                n1 = Int.random(in: 1...10)
                 n2 = Int.random(in: 2...3)
             }else if currentScore < 20{
-                n1 = Int.random(in: 1...100)
+                n1 = Int.random(in: 1...20)
                 n2 = Int.random(in: 2...3)
             }else if currentScore < 30{
+                n1 = Int.random(in: 1...50)
+                n2 = Int.random(in: 2...3)
+            }else{
                 n1 = Int.random(in: 1...100)
                 n2 = Int.random(in: 2...3)
             }
@@ -129,7 +144,6 @@ struct Manager{
     }
     
     func setDefaultBestScore(){
-    // Prevents crash when playing for the first time
         
         if userDefaults.value(forKey: "+") == nil{
             userDefaults.setValue(0, forKey: "+")

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class HomeViewController: UIViewController, SettingsDelegate {
     
@@ -48,6 +49,9 @@ class HomeViewController: UIViewController, SettingsDelegate {
         updateCornerRadius()
         manager.setDefaultBestScore()
         displayBestScore()
+        
+        let vc = UIHostingController(rootView: WelcomeScreenView())
+        present(vc, animated: true)
         
         
         

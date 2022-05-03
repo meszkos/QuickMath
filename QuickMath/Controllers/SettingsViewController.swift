@@ -46,6 +46,7 @@ class SettingsViewController: UIViewController {
         
         if pickedOperation != ""{
             delegate?.pickOperation(pickedOperation: pickedOperation)
+            
         }
         
         navigationController?.popViewController(animated: true)

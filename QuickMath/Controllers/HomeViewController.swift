@@ -32,6 +32,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
     @IBOutlet weak var bestScoreLabel: UILabel!
     
     let settingsController = SettingsViewController()
+    let welcomeScreenManager = WelcomeScreenManager()
     let userDefaults = UserDefaults()
     
     var answer: String = ""
@@ -50,10 +51,12 @@ class HomeViewController: UIViewController, SettingsDelegate {
         manager.setDefaultBestScore()
         displayBestScore()
         
-        let vc = UIHostingController(rootView: WelcomeScreenView())
-        present(vc, animated: true)
         
-        
+        //If app launches for the first time -> show WelcomeScreenView
+        if welcomeScreenManager.isFirstLaunch(){
+            let vc = UIHostingController(rootView: WelcomeScreenView())
+            present(vc, animated: true)
+        }
         
     }
     
@@ -280,4 +283,5 @@ class HomeViewController: UIViewController, SettingsDelegate {
         
         view.layer.addSublayer(bestScoreLayer)
     }
+
 }

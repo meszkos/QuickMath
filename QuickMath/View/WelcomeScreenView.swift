@@ -27,21 +27,21 @@ struct WelcomeScreenView: View {
                             Text(" - Solve equasion")
                                 .font(.title2)
                                 .foregroundColor(.blue)
-                            Text("Depending on yur score you will be provided equasion on diffrent diffiulity level")
+                            Text("Depending on yur score you will be provided with equasion on diffrent difficulty level")
                                 .padding(.leading, 20)
                         }
                         VStack(alignment: .leading){
                             Text(" - Be on time")
                                 .font(.title2)
                                 .foregroundColor(.blue)
-                            Text("For adding, subtracting and multipliyng time limit is 10s , for the dividing, power and random its 15s")
+                            Text("For addition, subtraction and multiplication time limit is 10s , for the division, raising to the power and random it's 15s")
                                 .padding(.leading, 20)
                         }
                         VStack(alignment: .leading){
                             Text(" - Pick equasion")
                                 .font(.title2)
                                 .foregroundColor(.blue)
-                            Text("You can change equasion in settings")
+                            Text("You can change equasion in the settings")
                                 .padding(.leading, 20)
                         }
                         VStack(alignment: .leading){
@@ -55,7 +55,9 @@ struct WelcomeScreenView: View {
                             presentationMode.wrappedValue.dismiss()
                         } label: {
                             Text("GOT IT!")
+                                .font(.system(size: 20)).bold()
                                 .frame(height: 50)
+                                
                                 .frame(maxWidth: .infinity)
                                 .background(.blue)
                                 .cornerRadius(20)

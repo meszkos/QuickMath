@@ -51,7 +51,7 @@ struct WelcomeScreenView: View {
                             Text("App saves your best scores to help you track your progress")
                                 .padding(.leading, 20)
                         }
-                        Button{
+                        Button {
                             presentationMode.wrappedValue.dismiss()
                         } label: {
                             Text("GOT IT!")
@@ -65,7 +65,7 @@ struct WelcomeScreenView: View {
                     }
                     .padding()
                     .background(.black)
-                .foregroundColor(.white)
+                    .foregroundColor(.white)
                 }
                 .background(.black)
                 .navigationBarHidden(true)

@@ -137,7 +137,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
             timer.invalidate()
             let timeLimit = manager.checkTimeLimit(operation: operation)
             
-    //If corect answer
+            //If corect answer
             if manager.correctResult == answer && time < Double(timeLimit)!{
                 resultLabel.textColor = UIColor.systemGreen
                 score += 1
@@ -159,7 +159,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
                     self.questionLabel.text = "\(self.manager.n1) \(self.operation) \(self.manager.n2) ="
                 }
             }
-    //If wrong answer
+            //If wrong answer
             if manager.correctResult != answer{
                 
                 resultLabel.textColor = UIColor.systemRed
@@ -168,7 +168,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
                 updateBestScore()
                 displayBestScore()
             }
-    //If too slow
+            //If too slow
             if time > Double(timeLimit)!{
                 
                 timeLabel.textColor = UIColor.systemRed
@@ -196,10 +196,8 @@ class HomeViewController: UIViewController, SettingsDelegate {
     }
     
     
-//MARK: - Seque 
-    
+//MARK: - Seque
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         time = 0.0
         timer.invalidate()
         
@@ -231,10 +229,7 @@ class HomeViewController: UIViewController, SettingsDelegate {
     
     
 //MARK: - UI Methods
-    
-    
     func displayBestScore(){
-        
         bestScoreLabel.text = "Best score: \(userDefaults.value(forKey: operation) as! Int)"
     }
     func updateBestScore(){
@@ -263,7 +258,6 @@ class HomeViewController: UIViewController, SettingsDelegate {
     func bestScoreAnimation(){
         
         let imagesArray = ["100","fire"]
-        
         bestScoreLayer.emitterPosition = CGPoint(x: view.center.x,
                                                  y: -100)
         
@@ -280,8 +274,6 @@ class HomeViewController: UIViewController, SettingsDelegate {
         }
         
         bestScoreLayer.emitterCells = cells
-        
         view.layer.addSublayer(bestScoreLayer)
     }
-
 }
